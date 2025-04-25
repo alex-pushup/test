@@ -1,0 +1,92 @@
+swagger: '2.0'
+info:
+  title: Sample API Documentation
+  description: |
+    <h1><a href="https://craftum.com" onclick="alert('XSS 1337')">Click Here</a></h1>
+    <h2 style="color: #2c3e50; font-family: Arial, sans-serif;">API Reference Documentation</h2>
+    <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #3498db;">
+      <p style="margin: 0;">This is a sample API documentation for demonstration purposes.</p>
+    </div>
+  version: "1.0.0"
+  contact:
+    name: API Support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+host: api.example.com
+basePath: /v1
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+
+securityDefinitions:
+  basicAuth:
+    type: basic
+    description: Standard HTTP basic authentication
+
+paths:
+  /accounts:
+    get:
+      tags:
+        - Accounts
+      summary: Retrieve account list
+      description: Returns a list of user accounts
+      operationId: getAccounts
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Account'
+        401:
+          description: Unauthorized
+        500:
+          description: Internal server error
+
+  /accounts/{id}:
+    delete:
+      tags:
+        - Accounts
+      summary: Delete an account
+      description: Deletes a specific account by ID
+      operationId: deleteAccount
+      parameters:
+        - name: id
+          in: path
+          description: Account ID to delete
+          required: true
+          type: integer
+          format: int64
+      responses:
+        204:
+          description: Account deleted successfully
+        404:
+          description: Account not found
+        500:
+          description: Internal server error
+
+definitions:
+  Account:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+        example: 1001
+      username:
+        type: string
+        example: "john_doe"
+      email:
+        type: string
+        format: email
+        example: "user@example.com"
+    required:
+      - id
+      - username
+      - email
